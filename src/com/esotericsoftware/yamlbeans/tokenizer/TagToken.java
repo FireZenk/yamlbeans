@@ -16,26 +16,28 @@
 
 package com.esotericsoftware.yamlbeans.tokenizer;
 
-/** @author <a href="mailto:misc@n4te.com">Nathan Sweet</a> */
+/**
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ */
 public class TagToken extends Token {
-	private final String handle;
-	private final String suffix;
+    private final String handle;
+    private final String suffix;
 
-	public TagToken (String handle, String suffix) {
-		super(TokenType.TAG);
-		this.handle = handle;
-		this.suffix = suffix;
-	}
+    TagToken(String handle, String suffix) {
+        super(TokenType.TAG);
+        this.handle = handle;
+        this.suffix = suffix;
+    }
 
-	public String getHandle () {
-		return handle;
-	}
+    public String getHandle() {
+        return handle;
+    }
 
-	public String getSuffix () {
-		return suffix;
-	}
+    public String getSuffix() {
+        return suffix;
+    }
 
-	public String toString () {
-		return "<" + type + " handle='" + handle + "' suffix='" + suffix + "'>";
-	}
+    public String toString() {
+        return "<" + type + " handle='" + handle + "' suffix='" + suffix + "'>";
+    }
 }

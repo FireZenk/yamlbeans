@@ -18,22 +18,24 @@ package com.esotericsoftware.yamlbeans;
 
 import java.io.IOException;
 
-/** @author <a href="mailto:misc@n4te.com">Nathan Sweet</a> */
+/**
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ */
 public class YamlException extends IOException {
-	public YamlException () {
-		super();
-	}
+    public YamlException() {
+        super();
+    }
 
-	public YamlException (String message, Throwable cause) {
-		super(message);
-		initCause(cause);
-	}
+    public YamlException(String message, Throwable cause) {
+        super(message);
+        initCause(cause);
+    }
 
-	public YamlException (String message) {
-		super(message);
-	}
+    public YamlException(String message) {
+        super(message);
+    }
 
-	public YamlException (Throwable cause) {
-		initCause(cause);
-	}
+    public YamlException(Throwable cause) {
+        initCause(cause);
+    }
 }

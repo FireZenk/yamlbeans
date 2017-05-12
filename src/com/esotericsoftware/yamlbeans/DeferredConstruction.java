@@ -23,70 +23,73 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Stores a constructor, parameters names, and property values so construction can be deferred until all property values are
+/**
+ * Stores a constructor, parameters names, and property values so construction can be deferred until all property values are
  * known.
- * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a> */
+ *
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ */
 class DeferredConstruction {
-	private final Constructor constructor;
-	private final String[] parameterNames;
-	private final ParameterValue[] parameterValues;
-	private final List<PropertyValue> propertyValues = new ArrayList(16);
+    private final Constructor constructor;
+    private final String[] parameterNames;
+    private final ParameterValue[] parameterValues;
+    private final List<PropertyValue> propertyValues = new ArrayList<>(16);
 
-	public DeferredConstruction (Constructor constructor, String[] parameterNames) {
-		this.constructor = constructor;
-		this.parameterNames = parameterNames;
-		parameterValues = new ParameterValue[parameterNames.length];
-	}
+    DeferredConstruction(Constructor constructor, String[] parameterNames) {
+        this.constructor = constructor;
+        this.parameterNames = parameterNames;
+        parameterValues = new ParameterValue[parameterNames.length];
+    }
 
-	public Object construct () throws InvocationTargetException {
-		try {
-			Object[] parameters = new Object[parameterValues.length];
-			int i = 0;
-			for (ParameterValue parameter : parameterValues) {
-				if (parameter == null)
-					throw new InvocationTargetException(new YamlException("Missing constructor property: " + parameterNames[i]));
-				parameters[i++] = parameter.value;
-			}
-			Object object = constructor.newInstance(parameters);
-			for (PropertyValue propertyValue : propertyValues)
-				propertyValue.property.set(object, propertyValue.value);
-			return object;
-		} catch (Exception ex) {
-			throw new InvocationTargetException(ex, "Error constructing instance of class: "
-				+ constructor.getDeclaringClass().getName());
-		}
-	}
+    Object construct() throws InvocationTargetException {
+        try {
+            Object[] parameters = new Object[parameterValues.length];
+            int i = 0;
+            for (ParameterValue parameter : parameterValues) {
+                if (parameter == null)
+                    throw new InvocationTargetException(new YamlException("Missing constructor property: " + parameterNames[i]));
+                parameters[i++] = parameter.value;
+            }
+            Object object = constructor.newInstance(parameters);
+            for (PropertyValue propertyValue : propertyValues)
+                propertyValue.property.set(object, propertyValue.value);
+            return object;
+        } catch (Exception ex) {
+            throw new InvocationTargetException(ex, "Error constructing instance of class: "
+                    + constructor.getDeclaringClass().getName());
+        }
+    }
 
-	public void storeProperty (Property property, Object value) {
-		int index = 0;
-		for (String name : parameterNames) {
-			if (property.getName().equals(name)) {
-				ParameterValue parameterValue = new ParameterValue();
-				parameterValue.value = value;
-				parameterValues[index] = parameterValue;
-				return;
-			}
-			index++;
-		}
+    void storeProperty(Property property, Object value) {
+        int index = 0;
+        for (String name : parameterNames) {
+            if (property.getName().equals(name)) {
+                ParameterValue parameterValue = new ParameterValue();
+                parameterValue.value = value;
+                parameterValues[index] = parameterValue;
+                return;
+            }
+            index++;
+        }
 
-		PropertyValue propertyValue = new PropertyValue();
-		propertyValue.property = property;
-		propertyValue.value = value;
-		propertyValues.add(propertyValue);
-	}
+        PropertyValue propertyValue = new PropertyValue();
+        propertyValue.property = property;
+        propertyValue.value = value;
+        propertyValues.add(propertyValue);
+    }
 
-	public boolean hasParameter (String name) {
-		for (String s : parameterNames)
-			if (s.equals(name)) return true;
-		return false;
-	}
+    boolean hasParameter(String name) {
+        for (String s : parameterNames)
+            if (s.equals(name)) return true;
+        return false;
+    }
 
-	static class PropertyValue {
-		Property property;
-		Object value;
-	}
+    static class PropertyValue {
+        Property property;
+        Object value;
+    }
 
-	static class ParameterValue {
-		Object value;
-	}
+    static class ParameterValue {
+        Object value;
+    }
 }

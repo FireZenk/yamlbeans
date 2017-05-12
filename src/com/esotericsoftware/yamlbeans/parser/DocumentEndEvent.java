@@ -16,17 +16,19 @@
 
 package com.esotericsoftware.yamlbeans.parser;
 
-/** @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
- * @author <a href="mailto:ola.bini@ki.se">Ola Bini</a> */
+/**
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ * @author <a href="mailto:ola.bini@ki.se">Ola Bini</a>
+ */
 public class DocumentEndEvent extends Event {
-	public final boolean isExplicit;
+    public final boolean isExplicit;
 
-	public DocumentEndEvent (boolean isExplicit) {
-		super(EventType.DOCUMENT_END);
-		this.isExplicit = isExplicit;
-	}
+    public DocumentEndEvent(boolean isExplicit) {
+        super(EventType.DOCUMENT_END);
+        this.isExplicit = isExplicit;
+    }
 
-	public String toString () {
-		return "<" + type + " explicit='" + isExplicit + "'>";
-	}
+    public String toString() {
+        return "<" + type + " explicit='" + isExplicit + "'>";
+    }
 }

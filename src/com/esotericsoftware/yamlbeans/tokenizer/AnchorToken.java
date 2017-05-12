@@ -16,23 +16,25 @@
 
 package com.esotericsoftware.yamlbeans.tokenizer;
 
-/** @author <a href="mailto:misc@n4te.com">Nathan Sweet</a> */
+/**
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ */
 public class AnchorToken extends Token {
-	private String instanceName;
+    private String instanceName;
 
-	public AnchorToken () {
-		super(TokenType.ANCHOR);
-	}
+    AnchorToken() {
+        super(TokenType.ANCHOR);
+    }
 
-	public String getInstanceName () {
-		return instanceName;
-	}
+    public String getInstanceName() {
+        return instanceName;
+    }
 
-	public void setInstanceName (String instanceName) {
-		this.instanceName = instanceName;
-	}
+    void setInstanceName(String instanceName) {
+        this.instanceName = instanceName;
+    }
 
-	public String toString () {
-		return "<" + type + " aliasName='" + instanceName + "'>";
-	}
+    public String toString() {
+        return "<" + type + " aliasName='" + instanceName + "'>";
+    }
 }

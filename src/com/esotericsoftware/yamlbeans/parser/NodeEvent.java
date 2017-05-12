@@ -16,13 +16,15 @@
 
 package com.esotericsoftware.yamlbeans.parser;
 
-/** @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
- * @author <a href="mailto:ola.bini@ki.se">Ola Bini</a> */
+/**
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ * @author <a href="mailto:ola.bini@ki.se">Ola Bini</a>
+ */
 public abstract class NodeEvent extends Event {
-	public final String anchor;
+    public final String anchor;
 
-	public NodeEvent (EventType eventType, String anchor) {
-		super(eventType);
-		this.anchor = anchor;
-	}
+    NodeEvent(EventType eventType, String anchor) {
+        super(eventType);
+        this.anchor = anchor;
+    }
 }

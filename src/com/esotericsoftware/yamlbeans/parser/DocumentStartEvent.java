@@ -20,21 +20,23 @@ import com.esotericsoftware.yamlbeans.Version;
 
 import java.util.Map;
 
-/** @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
- * @author <a href="mailto:ola.bini@ki.se">Ola Bini</a> */
+/**
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ * @author <a href="mailto:ola.bini@ki.se">Ola Bini</a>
+ */
 public class DocumentStartEvent extends Event {
-	public final boolean isExplicit;
-	public final Version version;
-	public final Map<String, String> tags;
+    public final boolean isExplicit;
+    public final Version version;
+    public final Map<String, String> tags;
 
-	public DocumentStartEvent (boolean explicit, Version version, Map<String, String> tags) {
-		super(EventType.DOCUMENT_START);
-		this.isExplicit = explicit;
-		this.version = version;
-		this.tags = tags;
-	}
+    public DocumentStartEvent(boolean explicit, Version version, Map<String, String> tags) {
+        super(EventType.DOCUMENT_START);
+        this.isExplicit = explicit;
+        this.version = version;
+        this.tags = tags;
+    }
 
-	public String toString () {
-		return "<" + type + " explicit='" + isExplicit + "' version='" + version + "' tags='" + tags + "'>";
-	}
+    public String toString() {
+        return "<" + type + " explicit='" + isExplicit + "' version='" + version + "' tags='" + tags + "'>";
+    }
 }

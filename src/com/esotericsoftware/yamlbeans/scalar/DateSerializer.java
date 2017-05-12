@@ -21,19 +21,21 @@ import com.esotericsoftware.yamlbeans.YamlException;
 import java.text.ParseException;
 import java.util.Date;
 
-/** @author <a href="mailto:misc@n4te.com">Nathan Sweet</a> */
+/**
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ */
 public class DateSerializer implements ScalarSerializer<Date> {
-	private DateTimeParser dateParser = new DateTimeParser();
+    private DateTimeParser dateParser = new DateTimeParser();
 
-	public Date read (String value) throws YamlException {
-		try {
-			return dateParser.parse(value);
-		} catch (ParseException ex) {
-			throw new YamlException("Invalid date: " + value, ex);
-		}
-	}
+    public Date read(String value) throws YamlException {
+        try {
+            return dateParser.parse(value);
+        } catch (ParseException ex) {
+            throw new YamlException("Invalid date: " + value, ex);
+        }
+    }
 
-	public String write (Date object) throws YamlException {
-		return dateParser.format(object);
-	}
+    public String write(Date object) throws YamlException {
+        return dateParser.format(object);
+    }
 }

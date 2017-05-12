@@ -16,22 +16,24 @@
 
 package com.esotericsoftware.yamlbeans.parser;
 
-/** @author <a href="mailto:misc@n4te.com">Nathan Sweet</a> */
+/**
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ */
 public class Event {
-	public static final Event MAPPING_END = new Event(EventType.MAPPING_END);
-	public static final Event SEQUENCE_END = new Event(EventType.SEQUENCE_END);
-	public static final Event STREAM_END = new Event(EventType.STREAM_END);
-	public static final Event STREAM_START = new Event(EventType.STREAM_START);
-	public static final Event DOCUMENT_END_TRUE = new DocumentEndEvent(true);
-	public static final Event DOCUMENT_END_FALSE = new DocumentEndEvent(false);
+    public static final Event MAPPING_END = new Event(EventType.MAPPING_END);
+    public static final Event SEQUENCE_END = new Event(EventType.SEQUENCE_END);
+    public static final Event STREAM_END = new Event(EventType.STREAM_END);
+    public static final Event STREAM_START = new Event(EventType.STREAM_START);
+    static final Event DOCUMENT_END_TRUE = new DocumentEndEvent(true);
+    static final Event DOCUMENT_END_FALSE = new DocumentEndEvent(false);
 
-	public final EventType type;
+    public final EventType type;
 
-	public Event (EventType type) {
-		this.type = type;
-	}
+    Event(EventType type) {
+        this.type = type;
+    }
 
-	public String toString () {
-		return "<" + type + ">";
-	}
+    public String toString() {
+        return "<" + type + ">";
+    }
 }

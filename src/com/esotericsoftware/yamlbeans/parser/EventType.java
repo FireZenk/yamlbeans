@@ -16,20 +16,22 @@
 
 package com.esotericsoftware.yamlbeans.parser;
 
-/** @author <a href="mailto:misc@n4te.com">Nathan Sweet</a> */
+/**
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ */
 public enum EventType {
-	STREAM_START, //
-	STREAM_END, //
-	SEQUENCE_START, //
-	SEQUENCE_END, //
-	SCALAR, //
-	MAPPING_START, //
-	MAPPING_END, //
-	DOCUMENT_START, //
-	DOCUMENT_END, //
-	ALIAS;
+    STREAM_START, //
+    STREAM_END, //
+    SEQUENCE_START, //
+    SEQUENCE_END, //
+    SCALAR, //
+    MAPPING_START, //
+    MAPPING_END, //
+    DOCUMENT_START, //
+    DOCUMENT_END, //
+    ALIAS;
 
-	public String toString () {
-		return name().toLowerCase().replace('_', ' ');
-	}
+    public String toString() {
+        return name().toLowerCase().replace('_', ' ');
+    }
 }

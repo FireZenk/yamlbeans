@@ -16,26 +16,28 @@
 
 package com.esotericsoftware.yamlbeans.tokenizer;
 
-/** @author <a href="mailto:misc@n4te.com">Nathan Sweet</a> */
+/**
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ */
 public class DirectiveToken extends Token {
-	private final String directive;
-	private final String value;
+    private final String directive;
+    private final String value;
 
-	public DirectiveToken (String directive, String value) {
-		super(TokenType.DIRECTIVE);
-		this.directive = directive;
-		this.value = value;
-	}
+    DirectiveToken(String directive, String value) {
+        super(TokenType.DIRECTIVE);
+        this.directive = directive;
+        this.value = value;
+    }
 
-	public String getDirective () {
-		return directive;
-	}
+    public String getDirective() {
+        return directive;
+    }
 
-	public String getValue () {
-		return value;
-	}
+    public String getValue() {
+        return value;
+    }
 
-	public String toString () {
-		return "<" + type + " directive='" + directive + "' value='" + value + "'>";
-	}
+    public String toString() {
+        return "<" + type + " directive='" + directive + "' value='" + value + "'>";
+    }
 }

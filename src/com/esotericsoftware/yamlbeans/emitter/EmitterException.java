@@ -16,9 +16,11 @@
 
 package com.esotericsoftware.yamlbeans.emitter;
 
-/** @author <a href="mailto:misc@n4te.com">Nathan Sweet</a> */
+/**
+ * @author <a href="mailto:misc@n4te.com">Nathan Sweet</a>
+ */
 public class EmitterException extends RuntimeException {
-	public EmitterException (String message) {
-		super(message);
-	}
+    EmitterException(String message) {
+        super(message);
+    }
 }
